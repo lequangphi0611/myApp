@@ -46,7 +46,11 @@ function phanso(tu,mau){
 function toPhanSo(string){//Chuyển string sang dạng phân số có tử và mẫu
   let index = -1;
   if(isNaN(string)){
-    index = string.search('/');
+    try{
+      index = string.search('/');
+    }catch(Error){
+      throw "Lỗi dữ liệu truyền vào";
+    }
   }
   if (index < 0){
     return convertPhanSo(string);
@@ -78,10 +82,9 @@ function convertPhanSo(soThapPhan){
       let length = soThapPhan.length;
       // soThapPhan = parseFloat(soThapPhan);
       let mau = 1;
-      for( let i = 1; !isNguyen(soThapPhan) && i < 20 ; i++){
+      while(!isNguyen(soThapPhan)){
         soThapPhan *= 10;
         mau *= 10;
-        i++;
       }
       return new phanso(soThapPhan,mau);
   }
@@ -92,6 +95,6 @@ function isNguyen(number){
   return parseInt(number) === number;
 }
 
-var x = toPhanSo("0.8");
+var x = toPhanSo("5/100");
 console.log(x.toiGian());
 console.log(x);
