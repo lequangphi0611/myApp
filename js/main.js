@@ -95,6 +95,9 @@ function isNguyen(number){
   return parseInt(number) === number;
 }
 
-var x = toPhanSo("5/100");
-console.log(x.toiGian());
+var num = 4.5;
+var x = toPhanSo(num);
+console.log(`Dữ liệu đầu vào : ${num}`)
+console.log(`Phân số chưa tối giản : ${x.typeDiff()}`)
+console.log(`Phaan số đã tối giản ${x.toiGian()}`);
 console.log(x);
